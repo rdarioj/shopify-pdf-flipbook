@@ -492,7 +492,41 @@ function touchDistance(a, b) {
   return Math.hypot(a.x - b.x, a.y - b.y);
 }
 
-/** Mobile: instant touch + finger-drag fold only (native StPageFlip, no UI hacks). */
+function getMobileFlipZone(pf, globalPos) {
+  const render = pf.getRender();
+  const rect = render.getRect();
+  const bookPos = render.convertToBook(globalPos);
+  const pw = rect.pageWidth;
+  const reach = Math.hypot(pw, rect.height) / 5;
+
+  if (
+    bookPos.x <= 0 ||
+    bookPos.y <= 0 ||
+    bookPos.x >= rect.width ||
+    bookPos.y >= rect.height
+  ) {
+    return null;
+  }
+
+  const top = bookPos.y < reach;
+  const bottom = bookPos.y > rect.height - reach;
+  if (!top && !bottom) return null;
+
+  if (bookPos.x > rect.width - reach) return "next";
+
+  if (pf.getOrientation() === "portrait") {
+    if (bookPos.x < reach || Math.abs(bookPos.x - pw) < reach * 1.2) return "prev";
+  } else if (bookPos.x < reach) {
+    return "prev";
+  }
+
+  return null;
+}
+
+/**
+ * Mobile portrait: BACK drag uses broken fold math (stretched page).
+ * Mirror forward behavior — tap or release in left zone runs flipPrev animation.
+ */
 function installMobileNaturalFlip(pf) {
   if (!isMobileViewport()) return;
 
@@ -500,15 +534,51 @@ function installMobileNaturalFlip(pf) {
   const dist = pf.getUI()?.getDistElement?.();
   if (!dist) return;
 
+  let touchZone = null;
+  const origFold = fc.fold.bind(fc);
+  const origFlip = fc.flip.bind(fc);
+  const origUserStop = pf.userStop.bind(pf);
+
+  const finishFold = () => {
+    if (fc.calc !== null) {
+      fc.render.finishAnimation();
+    }
+  };
+
+  fc.flip = function mobileFlip(globalPos) {
+    const zone = getMobileFlipZone(pf, globalPos);
+    if (zone === "prev") {
+      if (pf.getCurrentPageIndex() >= 1) this.flipPrev("top");
+      return;
+    }
+    origFlip(globalPos);
+  };
+
   pf.userMove = function mobileUserMove(pos) {
     if (!this.isUserTouch && this.getSettings().showPageCorners) {
-      fc.showCorner(pos);
+      const zone = getMobileFlipZone(pf, pos);
+      if (zone !== "prev") fc.showCorner(pos);
     } else if (this.isUserTouch) {
       if (touchDistance(this.mousePosition, pos) > 5) {
         this.isUserMove = true;
-        fc.fold(pos);
+        if (touchZone === "next") origFold(pos);
       }
     }
+  };
+
+  pf.userStop = function mobileUserStop(pos, isSwipe = false) {
+    if (this.isUserTouch && !isSwipe) {
+      const zone = getMobileFlipZone(pf, pos) || touchZone;
+      if (zone === "prev" && pf.getCurrentPageIndex() >= 1) {
+        this.isUserTouch = false;
+        finishFold();
+        fc.flipPrev("top");
+        touchZone = null;
+        return;
+      }
+    }
+    touchZone = null;
+    origUserStop(pos, isSwipe);
   };
 
   dist.addEventListener(
@@ -518,10 +588,9 @@ function installMobileNaturalFlip(pf) {
       const t = e.changedTouches[0];
       if (!t) return;
       const rect = dist.getBoundingClientRect();
-      pf.startUserTouch({
-        x: t.clientX - rect.left,
-        y: t.clientY - rect.top,
-      });
+      const pos = { x: t.clientX - rect.left, y: t.clientY - rect.top };
+      touchZone = getMobileFlipZone(pf, pos);
+      pf.startUserTouch(pos);
     },
     { passive: true }
   );
