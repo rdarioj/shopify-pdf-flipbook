@@ -1,0 +1,232 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  background: #121214;
+  color: #ececec;
+  min-height: 100vh;
+}
+
+.ca-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 24px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.ca-header h1 {
+  margin: 0 0 6px;
+  font-size: 1.5rem;
+}
+
+.ca-sub {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 0.92rem;
+  max-width: 52ch;
+}
+
+.ca-sub code {
+  color: #e8f5a0;
+}
+
+.ca-header-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.ca-main {
+  padding: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.ca-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+}
+
+.ca-empty {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.ca-card {
+  background: #1a1a1f;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ca-card--frozen {
+  border-color: rgba(200, 230, 80, 0.25);
+}
+
+.ca-card__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.ca-card__head h2 {
+  margin: 0;
+  font-size: 1rem;
+  flex: 1 1 100%;
+}
+
+.ca-badge {
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.ca-badge--frozen {
+  background: rgba(200, 230, 80, 0.15);
+  color: #e8f5a0;
+}
+
+.ca-badge--auth {
+  background: rgba(124, 58, 237, 0.2);
+  color: #c4b5fd;
+}
+
+.ca-meta {
+  margin: 0;
+  font-size: 12px;
+  display: grid;
+  gap: 6px;
+}
+
+.ca-meta div {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: 8px;
+}
+
+.ca-meta dt {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.ca-meta dd {
+  margin: 0;
+  word-break: break-all;
+}
+
+.ca-meta code {
+  font-size: 11px;
+  color: #b8d4ff;
+}
+
+.ca-notes {
+  margin: 0;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.ca-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.ca-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.ca-btn:hover {
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.ca-btn--primary {
+  background: rgba(200, 230, 80, 0.22);
+  border-color: rgba(200, 230, 80, 0.35);
+  color: #e8f5a0;
+}
+
+.ca-btn--ghost {
+  background: transparent;
+}
+
+.ca-btn--danger {
+  border-color: rgba(255, 100, 100, 0.35);
+  color: #ffb4b4;
+}
+
+.ca-dialog {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  padding: 0;
+  background: #1c1c22;
+  color: #fff;
+  max-width: 480px;
+  width: calc(100% - 24px);
+}
+
+.ca-dialog::backdrop {
+  background: rgba(0, 0, 0, 0.55);
+}
+
+.ca-form {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ca-form h2 {
+  margin: 0 0 8px;
+  font-size: 1.1rem;
+}
+
+.ca-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.ca-form input,
+.ca-form select,
+.ca-form textarea {
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: #111;
+  color: #fff;
+  font: inherit;
+  font-size: 14px;
+}
+
+.ca-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 8px;
+}

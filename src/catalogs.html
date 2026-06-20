@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Catalogs · Flipbook</title>
+  <link rel="stylesheet" href="./styles/catalogs-admin.css" />
+</head>
+<body>
+  <header class="ca-header">
+    <div>
+      <h1>Flipbook catalogs</h1>
+      <p class="ca-sub">Pick a catalog to open (public) or edit (login required). Racket Central catalogs only.</p>
+    </div>
+    <div class="ca-header-actions">
+      <button type="button" class="ca-btn ca-btn--ghost" id="btnExport">Export local</button>
+      <label class="ca-btn ca-btn--ghost">
+        Import
+        <input type="file" id="importFile" accept="application/json,.json" hidden />
+      </label>
+      <button type="button" class="ca-btn ca-btn--ghost" id="btnReset">Restore seed</button>
+      <button type="button" class="ca-btn ca-btn--primary" id="btnNew">+ New catalog</button>
+    </div>
+  </header>
+
+  <main class="ca-main">
+    <div id="catalogList" class="ca-grid" aria-live="polite"></div>
+  </main>
+
+  <dialog id="catalogDialog" class="ca-dialog">
+    <form id="catalogForm" method="dialog" class="ca-form">
+      <h2 id="dialogTitle">Catalog</h2>
+      <label>ID (slug, not editable later)
+        <input name="id" required pattern="[a-z0-9-]+" placeholder="my-client-2026" />
+      </label>
+      <label>Title
+        <input name="title" required placeholder="Wholesale X · Catalog 2026" />
+      </label>
+      <label>PDF (relative path)
+        <input name="pdfUrl" required placeholder="./catalogos/my-catalog.pdf" />
+      </label>
+      <label>Mode
+        <select name="mode">
+          <option value="shopify">Shopify (cart)</option>
+          <option value="b2b-whatsapp">B2B WhatsApp (order list)</option>
+        </select>
+      </label>
+      <label>Hotspots bundle
+        <select name="hotspotsFile">
+          <option value="default">default (RC / empty)</option>
+          <option value="tap">tap (TAP demo)</option>
+        </select>
+      </label>
+      <label>Store origin (Shopify / brand)
+        <input name="storeOrigin" placeholder="https://mystore.com" />
+      </label>
+      <label>WhatsApp (B2B only, digits with country code)
+        <input name="whatsappPhone" placeholder="54911..." />
+      </label>
+      <label>Business name (WA)
+        <input name="whatsappBusinessName" placeholder="TAP" />
+      </label>
+      <label>WA intro message
+        <input name="whatsappIntro" placeholder="Hi, I'd like to order:" />
+      </label>
+      <label>Footer hint
+        <input name="footerHint" placeholder="Tap a product…" />
+      </label>
+      <label>Internal notes
+        <textarea name="notes" rows="2"></textarea>
+      </label>
+      <div class="ca-form-actions">
+        <button type="button" class="ca-btn ca-btn--ghost" id="btnCancel">Cancel</button>
+        <button type="submit" class="ca-btn ca-btn--primary">Save</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script type="module" src="./scripts/catalogs-admin.js"></script>
+</body>
+</html>

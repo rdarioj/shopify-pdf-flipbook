@@ -1,0 +1,31 @@
+{
+  "name": "shopify-pdf-flipbook",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "node scripts/parcel-dev.mjs src/index.html src/catalogs.html src/viewer.html --open index.html",
+    "dev:catalogs": "node scripts/parcel-dev.mjs src/catalogs.html src/viewer.html src/index.html --open catalogs.html",
+    "dev:full": "node scripts/use-catalogs-full.mjs && node scripts/parcel-dev.mjs src/catalogs.html src/viewer.html src/index.html --open catalogs.html",
+    "dev:viewer": "node scripts/parcel-dev.mjs src/viewer.html src/catalogs.html src/index.html",
+    "dev:tap": "parcel src/tap-demo.html --open",
+    "prebuild": "node scripts/ensure-catalog-pdf.mjs",
+    "build": "node scripts/build-rc-prod.mjs",
+    "build:legacy-index": "parcel build src/index.html --public-url ./ && node scripts/copy-public-to-dist.mjs",
+    "build:rc": "node scripts/build-rc-prod.mjs",
+    "build:tap": "parcel build src/viewer.html --public-url ./ --dist-dir dist-tap && node scripts/copy-public-to-dist.mjs dist-tap",
+    "build:catalogs": "parcel build src/catalogs.html src/viewer.html --public-url ./ --dist-dir dist-all && node scripts/copy-public-to-dist.mjs dist-all",
+    "catalog:analyze": "python scripts/analyze-catalog-pdf.py",
+    "catalog:hotspots": "node scripts/generate-hotspots-from-catalog.mjs",
+    "catalog:extract-abril": "python scripts/extract-abril-products.py",
+    "catalog:rc-test-csv": "python scripts/extract-abril-products.py && python scripts/build-rc-test-csv-from-abril.py",
+    "catalog:fill-rc": "python scripts/fill-rc-template-from-csv.py",
+    "catalog:padel-2026": "python scripts/build-rc-csv-from-shopify-collection.py src/config/collections/padel-rackets-2026.collection.json && python scripts/fill-rc-template-from-csv.py"
+  },
+  "devDependencies": {
+    "parcel": "^2.9.3"
+  },
+  "dependencies": {
+    "page-flip": "^2.0.7",
+    "qrcode": "^1.5.4"
+  }
+}

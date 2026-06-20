@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "catalogs": [
+    {
+      "id": "racket-central",
+      "title": "Racket Central Catalog · April 2024",
+      "organization": "racketcentral",
+      "requireAuth": false,
+      "editorRequireAuth": true,
+      "pdfUrl": "./catalogo-abril.pdf",
+      "hotspotsFile": "default",
+      "mode": "shopify",
+      "frozen": true,
+      "entry": "index.html",
+      "storeOrigin": "https://racketcentral.com",
+      "addMode": "permalink",
+      "navigate": "tab",
+      "publishMode": true,
+      "hotspotDebug": false,
+      "footerHint": "Tap a product to shop at racketcentral.com",
+      "notes": "Frozen production entry for RC."
+    },
+    {
+      "id": "rc-template",
+      "title": "RC Catalog · Template (new)",
+      "organization": "racketcentral",
+      "requireAuth": false,
+      "editorRequireAuth": true,
+      "pdfUrl": "./catalogo-rc-template-filled.pdf",
+      "hotspotsFile": "rc-template",
+      "mode": "shopify",
+      "frozen": false,
+      "entry": "viewer.html",
+      "storeOrigin": "https://racketcentral.com",
+      "addMode": "permalink",
+      "navigate": "tab",
+      "publishMode": true,
+      "hotspotDebug": false,
+      "singlePage": false,
+      "footerHint": "Tap a product to shop at racketcentral.com",
+      "notes": "RC Template 2026 — Padel Summer Sale."
+    }
+  ]
+}

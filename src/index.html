@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Catálogo Racket Central · Abril 2024</title>
+  <link rel="stylesheet" href="./styles/flipbook.css" />
+  <script>
+    (function () {
+      var isEditor = new URLSearchParams(window.location.search).get("editor") === "1";
+      window.FLIPBOOK_CONFIG = {
+        storeOrigin: "https://racketcentral.com",
+        addMode: "permalink",
+        showDetectedProducts: false,
+        hotspotDebug: false,
+        navigate: "tab",
+        publishMode: true,
+        requireAuth: isEditor,
+        editorRequireAuth: true,
+        organization: "racketcentral",
+        defaultPdfUrl: "./catalogo-abril.pdf",
+        catalogTitle: "Catálogo Racket Central · Abril 2024",
+        editorPdfLibrary: [
+          {
+            id: "abril-2024",
+            label: "Catálogo Abril 2024",
+            pdfUrl: "./catalogo-abril.pdf",
+            hotspotsFile: "default",
+            catalogTitle: "Catálogo Racket Central · Abril 2024"
+          },
+          {
+            id: "rc-template",
+            label: "RC Template (nuevo)",
+            pdfUrl: "./catalogo-rc-template-filled.pdf",
+            hotspotsFile: "rc-template",
+            catalogTitle: "Catálogo RC · Template"
+          }
+        ]
+      };
+    })();
+  </script>
+</head>
+<body class="is-publish">
+  <div id="rc-auth-gate" class="hidden">
+    <div class="auth-box">
+      <div class="auth-logo">Racket Central</div>
+      <div class="auth-sub">Catálogo interactivo</div>
+      <p class="auth-hint">Ingresá con tu cuenta de Google corporativa</p>
+      <div class="auth-google-wrap">
+        <div id="google-btn-container"></div>
+      </div>
+      <div class="auth-error" id="auth-error"></div>
+      <div class="auth-alt">
+        <button type="button" class="auth-alt-btn" onclick="togglePasswordLogin()">Login con usuario y contraseña</button>
+      </div>
+      <div id="pw-fallback" class="auth-pw-fallback" style="display:none">
+        <label class="auth-label">Usuario</label>
+        <input id="auth-username" class="auth-input auth-input-text" type="text" placeholder="Usuario" autocomplete="username" />
+        <label class="auth-label">Contraseña</label>
+        <input id="auth-password" class="auth-input" type="password" placeholder="Contraseña" autocomplete="current-password" />
+        <button type="button" class="auth-submit" onclick="rcLogin()">Ingresar</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="rc-flipbook-app">
+    <div id="catalogLoading" class="catalog-loading" aria-live="polite">
+      <div class="catalog-loading__inner">
+        <div class="catalog-loading__spinner" aria-hidden="true"></div>
+        <p>Cargando catálogo…</p>
+      </div>
+    </div>
+    <header class="toolbar">
+      <div class="left">
+        <button type="button" id="prevBtn" title="Anterior">⟵</button>
+        <button type="button" id="nextBtn" title="Siguiente">⟶</button>
+        <span id="pageInfo">—</span>
+      </div>
+      <div class="center toolbar-title" id="toolbarTitle"></div>
+      <div class="right">
+        <div class="toolbar-user" id="rcToolbarUser" hidden>
+          <span class="toolbar-user__name" id="rcUserName"></span>
+          <button type="button" class="toolbar-user__logout" id="logoutBtn">Salir</button>
+        </div>
+        <label class="upload" id="uploadControl" style="cursor: pointer">
+          <input id="pdfInput" type="file" accept="application/pdf" style="display: none" />
+          <span id="uploadLabel">📂 Cargar PDF</span>
+        </label>
+      </div>
+    </header>
+
+    <main class="viewer">
+      <aside id="thumbnails" class="thumbnails" aria-label="Miniaturas"></aside>
+      <section id="flipbook" class="flipbook" aria-live="polite">
+        <div class="flipbook-stage">
+          <div class="flipbook-book-slot"></div>
+          <div class="flipbook-edge-ui">
+            <button type="button" class="flipbook-edge-zone flipbook-edge-zone--prev" aria-label="Página anterior" title="Anterior">
+              <span class="flipbook-edge-visual flipbook-edge-visual--prev">
+                <span class="flipbook-edge-curl" aria-hidden="true"></span>
+                <span class="flipbook-edge-arrow" aria-hidden="true">‹</span>
+              </span>
+            </button>
+            <button type="button" class="flipbook-edge-zone flipbook-edge-zone--next" aria-label="Página siguiente" title="Siguiente">
+              <span class="flipbook-edge-visual flipbook-edge-visual--next">
+                <span class="flipbook-edge-curl" aria-hidden="true"></span>
+                <span class="flipbook-edge-arrow" aria-hidden="true">›</span>
+              </span>
+            </button>
+          </div>
+        </div>
+        <div class="flipbook-scrubber" id="flipbookScrubber" hidden role="slider" aria-label="Progreso en el catálogo" aria-valuemin="1" aria-valuenow="1" aria-valuemax="1">
+          <div class="flipbook-scrubber__track" role="presentation">
+            <div class="flipbook-scrubber__fill"></div>
+            <button type="button" class="flipbook-scrubber__thumb" aria-label="Arrastrar para otra sección del catálogo"></button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <small><span id="pdfName">Catálogo</span> · Tocá un producto para comprar en racketcentral.com</small>
+    </footer>
+  </div>
+
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <script src="./scripts/auth-rc.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.9.179/pdf.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.9.179/pdf.worker.min.js"></script>
+  <script type="module" src="./scripts/main.js"></script>
+</body>
+</html>

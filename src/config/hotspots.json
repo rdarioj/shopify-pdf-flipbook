@@ -1,0 +1,1036 @@
+{
+  "2": [
+    {
+      "slot": 1,
+      "preset": "catalog-8",
+      "x": 0.0323,
+      "y": 0.3224,
+      "w": 0.4674,
+      "h": 0.2111,
+      "action": "add",
+      "quantity": 1,
+      "label": "NOX AT10 Genius 18K Alum 2026",
+      "variantId": "49761264107797"
+    },
+    {
+      "slot": 2,
+      "preset": "catalog-8",
+      "x": 0.5003,
+      "y": 0.341,
+      "w": 0.3716,
+      "h": 0.1915,
+      "action": "add",
+      "quantity": 1,
+      "label": "NOX AT10 Genius 12K Alum Xtreme 2026",
+      "variantId": "49761264173333"
+    },
+    {
+      "slot": 3,
+      "preset": "catalog-8",
+      "x": 0.0323,
+      "y": 0.5253,
+      "w": 0.4674,
+      "h": 0.1984,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 3"
+    },
+    {
+      "slot": 4,
+      "preset": "catalog-8",
+      "x": 0.5003,
+      "y": 0.5273,
+      "w": 0.4674,
+      "h": 0.1964,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 4"
+    },
+    {
+      "slot": 5,
+      "preset": "catalog-8",
+      "x": 0.0281,
+      "y": 0.7214,
+      "w": 0.2354,
+      "h": 0.1915,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 5"
+    },
+    {
+      "slot": 6,
+      "preset": "catalog-8",
+      "x": 0.2642,
+      "y": 0.7214,
+      "w": 0.2368,
+      "h": 0.1915,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 6"
+    },
+    {
+      "slot": 7,
+      "preset": "catalog-8",
+      "x": 0.5003,
+      "y": 0.7214,
+      "w": 0.2479,
+      "h": 0.1915,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 7"
+    },
+    {
+      "slot": 8,
+      "preset": "catalog-8",
+      "x": 0.7364,
+      "y": 0.7214,
+      "w": 0.2354,
+      "h": 0.1915,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 8"
+    }
+  ],
+  "3": [
+    {
+      "slot": 1,
+      "preset": "catalog-8",
+      "x": 0.5003,
+      "y": 0.3175,
+      "w": 0.4674,
+      "h": 0.215,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 1"
+    },
+    {
+      "slot": 2,
+      "preset": "catalog-8",
+      "x": 0.0323,
+      "y": 0.3204,
+      "w": 0.4674,
+      "h": 0.2121,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 2"
+    },
+    {
+      "slot": 3,
+      "preset": "catalog-8",
+      "x": 0.5003,
+      "y": 0.5253,
+      "w": 0.4674,
+      "h": 0.1974,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 3"
+    },
+    {
+      "slot": 4,
+      "preset": "catalog-8",
+      "x": 0.0323,
+      "y": 0.5253,
+      "w": 0.4771,
+      "h": 0.1984,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 4"
+    },
+    {
+      "slot": 5,
+      "preset": "catalog-8",
+      "x": 0.0281,
+      "y": 0.7214,
+      "w": 0.2438,
+      "h": 0.1915,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 5"
+    },
+    {
+      "slot": 6,
+      "preset": "catalog-8",
+      "x": 0.2642,
+      "y": 0.7214,
+      "w": 0.2382,
+      "h": 0.1915,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 6"
+    },
+    {
+      "slot": 7,
+      "preset": "catalog-8",
+      "x": 0.5003,
+      "y": 0.7214,
+      "w": 0.2438,
+      "h": 0.1915,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 7"
+    },
+    {
+      "slot": 8,
+      "preset": "catalog-8",
+      "x": 0.7364,
+      "y": 0.7214,
+      "w": 0.2354,
+      "h": 0.1915,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 8"
+    }
+  ],
+  "4": [
+    {
+      "slot": 1,
+      "preset": "grid-10",
+      "x": 0.0323,
+      "y": 0.341,
+      "w": 0.4674,
+      "h": 0.1925,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 1"
+    },
+    {
+      "slot": 2,
+      "preset": "grid-10",
+      "x": 0.5003,
+      "y": 0.341,
+      "w": 0.3618,
+      "h": 0.1925,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 2"
+    },
+    {
+      "slot": 3,
+      "preset": "grid-10",
+      "x": 0.8489,
+      "y": 0.341,
+      "w": 0.1188,
+      "h": 0.1925,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 3"
+    },
+    {
+      "slot": 4,
+      "preset": "grid-10",
+      "x": 0.3628,
+      "y": 0.5224,
+      "w": 0.1368,
+      "h": 0.2003,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 4"
+    },
+    {
+      "slot": 5,
+      "preset": "grid-10",
+      "x": 0.5003,
+      "y": 0.5234,
+      "w": 0.4674,
+      "h": 0.1993,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 5"
+    },
+    {
+      "slot": 6,
+      "preset": "grid-10",
+      "x": 0.0323,
+      "y": 0.5302,
+      "w": 0.3424,
+      "h": 0.1925,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 6"
+    },
+    {
+      "slot": 7,
+      "preset": "grid-10",
+      "x": 0.0281,
+      "y": 0.7214,
+      "w": 0.2354,
+      "h": 0.1915,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 7"
+    },
+    {
+      "slot": 8,
+      "preset": "grid-10",
+      "x": 0.5003,
+      "y": 0.7214,
+      "w": 0.2479,
+      "h": 0.1915,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 8"
+    },
+    {
+      "slot": 9,
+      "preset": "grid-10",
+      "x": 0.2642,
+      "y": 0.7214,
+      "w": 0.2368,
+      "h": 0.1925,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 9"
+    },
+    {
+      "slot": 10,
+      "preset": "grid-10",
+      "x": 0.7364,
+      "y": 0.7214,
+      "w": 0.2521,
+      "h": 0.1925,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 10"
+    }
+  ],
+  "5": [
+    {
+      "slot": 1,
+      "preset": "grid-9",
+      "x": 0.5003,
+      "y": 0.341,
+      "w": 0.3771,
+      "h": 0.1915,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 1"
+    },
+    {
+      "slot": 2,
+      "preset": "grid-9",
+      "x": 0.0323,
+      "y": 0.341,
+      "w": 0.3771,
+      "h": 0.1925,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 2"
+    },
+    {
+      "slot": 3,
+      "preset": "grid-9",
+      "x": 0.8337,
+      "y": 0.4175,
+      "w": 0.141,
+      "h": 0.116,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 3"
+    },
+    {
+      "slot": 4,
+      "preset": "grid-9",
+      "x": 0.0323,
+      "y": 0.5302,
+      "w": 0.4646,
+      "h": 0.1925,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 4"
+    },
+    {
+      "slot": 5,
+      "preset": "grid-9",
+      "x": 0.5003,
+      "y": 0.5302,
+      "w": 0.4688,
+      "h": 0.1925,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 5"
+    },
+    {
+      "slot": 6,
+      "preset": "grid-9",
+      "x": 0.0281,
+      "y": 0.7214,
+      "w": 0.2216,
+      "h": 0.1915,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 6"
+    },
+    {
+      "slot": 7,
+      "preset": "grid-9",
+      "x": 0.6601,
+      "y": 0.7214,
+      "w": 0.2285,
+      "h": 0.1915,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 7"
+    },
+    {
+      "slot": 8,
+      "preset": "grid-9",
+      "x": 0.2184,
+      "y": 0.7214,
+      "w": 0.1202,
+      "h": 0.1925,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 8"
+    },
+    {
+      "slot": 9,
+      "preset": "grid-9",
+      "x": 0.3406,
+      "y": 0.7224,
+      "w": 0.3174,
+      "h": 0.1915,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 9"
+    }
+  ],
+  "6": [
+    {
+      "slot": 1,
+      "preset": "catalog-8",
+      "x": 0.0323,
+      "y": 0.3234,
+      "w": 0.4674,
+      "h": 0.2091,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 1"
+    },
+    {
+      "slot": 2,
+      "preset": "catalog-8",
+      "x": 0.5003,
+      "y": 0.341,
+      "w": 0.4674,
+      "h": 0.1925,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 2"
+    },
+    {
+      "slot": 3,
+      "preset": "catalog-8",
+      "x": 0.0323,
+      "y": 0.5253,
+      "w": 0.4674,
+      "h": 0.1974,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 3"
+    },
+    {
+      "slot": 4,
+      "preset": "catalog-8",
+      "x": 0.5003,
+      "y": 0.5273,
+      "w": 0.4674,
+      "h": 0.1954,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 4"
+    },
+    {
+      "slot": 5,
+      "preset": "catalog-8",
+      "x": 0.0281,
+      "y": 0.7214,
+      "w": 0.2354,
+      "h": 0.1915,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 5"
+    },
+    {
+      "slot": 6,
+      "preset": "catalog-8",
+      "x": 0.2642,
+      "y": 0.7214,
+      "w": 0.2438,
+      "h": 0.1915,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 6"
+    },
+    {
+      "slot": 7,
+      "preset": "catalog-8",
+      "x": 0.5003,
+      "y": 0.7214,
+      "w": 0.2452,
+      "h": 0.1915,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 7"
+    },
+    {
+      "slot": 8,
+      "preset": "catalog-8",
+      "x": 0.7364,
+      "y": 0.7214,
+      "w": 0.2354,
+      "h": 0.1915,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 8"
+    }
+  ],
+  "7": [
+    {
+      "slot": 1,
+      "preset": "catalog-8",
+      "x": 0.5003,
+      "y": 0.3273,
+      "w": 0.4757,
+      "h": 0.2082,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 1"
+    },
+    {
+      "slot": 2,
+      "preset": "catalog-8",
+      "x": 0.0323,
+      "y": 0.34,
+      "w": 0.4674,
+      "h": 0.1954,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 2"
+    },
+    {
+      "slot": 3,
+      "preset": "catalog-8",
+      "x": 0.2976,
+      "y": 0.5234,
+      "w": 0.1632,
+      "h": 0.1435,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 3"
+    },
+    {
+      "slot": 4,
+      "preset": "catalog-8",
+      "x": 0.0323,
+      "y": 0.5302,
+      "w": 0.4091,
+      "h": 0.1925,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 4"
+    },
+    {
+      "slot": 5,
+      "preset": "catalog-8",
+      "x": 0.5003,
+      "y": 0.5244,
+      "w": 0.4757,
+      "h": 0.2052,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 5"
+    },
+    {
+      "slot": 6,
+      "preset": "catalog-8",
+      "x": 0.0281,
+      "y": 0.7214,
+      "w": 0.2396,
+      "h": 0.1915,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 6"
+    },
+    {
+      "slot": 7,
+      "preset": "catalog-8",
+      "x": 0.2642,
+      "y": 0.7214,
+      "w": 0.2507,
+      "h": 0.1915,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 7"
+    },
+    {
+      "slot": 8,
+      "preset": "catalog-8",
+      "x": 0.5003,
+      "y": 0.7214,
+      "w": 0.4952,
+      "h": 0.1915,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 8"
+    }
+  ],
+  "8": [
+    {
+      "slot": 1,
+      "preset": "grid-10",
+      "x": 0.0323,
+      "y": 0.341,
+      "w": 0.566,
+      "h": 0.1915,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 1"
+    },
+    {
+      "slot": 2,
+      "preset": "grid-10",
+      "x": 0.4614,
+      "y": 0.341,
+      "w": 0.5063,
+      "h": 0.1915,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 2"
+    },
+    {
+      "slot": 3,
+      "preset": "grid-10",
+      "x": 0.7364,
+      "y": 0.5293,
+      "w": 0.2354,
+      "h": 0.1827,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 3"
+    },
+    {
+      "slot": 4,
+      "preset": "grid-10",
+      "x": 0.2642,
+      "y": 0.5273,
+      "w": 0.2368,
+      "h": 0.1935,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 4"
+    },
+    {
+      "slot": 5,
+      "preset": "grid-10",
+      "x": 0.5003,
+      "y": 0.5293,
+      "w": 0.2354,
+      "h": 0.1895,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 5"
+    },
+    {
+      "slot": 6,
+      "preset": "grid-10",
+      "x": 0.0281,
+      "y": 0.5293,
+      "w": 0.2354,
+      "h": 0.1915,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 6"
+    },
+    {
+      "slot": 7,
+      "preset": "grid-10",
+      "x": 0.7364,
+      "y": 0.7175,
+      "w": 0.2354,
+      "h": 0.1885,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 7"
+    },
+    {
+      "slot": 8,
+      "preset": "grid-10",
+      "x": 0.5003,
+      "y": 0.7175,
+      "w": 0.2354,
+      "h": 0.1895,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 8"
+    },
+    {
+      "slot": 9,
+      "preset": "grid-10",
+      "x": 0.0267,
+      "y": 0.7175,
+      "w": 0.2368,
+      "h": 0.1915,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 9"
+    },
+    {
+      "slot": 10,
+      "preset": "grid-10",
+      "x": 0.2642,
+      "y": 0.7175,
+      "w": 0.2368,
+      "h": 0.1915,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 10"
+    }
+  ],
+  "9": [
+    {
+      "slot": 1,
+      "preset": "grid-10",
+      "x": 0.0323,
+      "y": 0.318,
+      "w": 0.4674,
+      "h": 0.198,
+      "action": "add",
+      "quantity": 1,
+      "label": "Babolat Bag RH Pro Technical"
+    },
+    {
+      "slot": 2,
+      "preset": "grid-10",
+      "x": 0.5003,
+      "y": 0.318,
+      "w": 0.4674,
+      "h": 0.198,
+      "action": "add",
+      "quantity": 1,
+      "label": "Babolat Bag Court S Multicolor"
+    },
+    {
+      "slot": 3,
+      "preset": "grid-10",
+      "x": 0.7364,
+      "y": 0.5018,
+      "w": 0.2535,
+      "h": 0.1915,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 3"
+    },
+    {
+      "slot": 4,
+      "preset": "grid-10",
+      "x": 0.4962,
+      "y": 0.5018,
+      "w": 0.2466,
+      "h": 0.1954,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 4"
+    },
+    {
+      "slot": 5,
+      "preset": "grid-10",
+      "x": 0.0087,
+      "y": 0.5018,
+      "w": 0.2674,
+      "h": 0.1974,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 5"
+    },
+    {
+      "slot": 6,
+      "preset": "grid-10",
+      "x": 0.2642,
+      "y": 0.5018,
+      "w": 0.2368,
+      "h": 0.1984,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 6"
+    },
+    {
+      "slot": 7,
+      "preset": "grid-10",
+      "x": 0.0281,
+      "y": 0.7342,
+      "w": 0.2466,
+      "h": 0.1817,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 7"
+    },
+    {
+      "slot": 8,
+      "preset": "grid-10",
+      "x": 0.2642,
+      "y": 0.7342,
+      "w": 0.2368,
+      "h": 0.1817,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 8"
+    },
+    {
+      "slot": 9,
+      "preset": "grid-10",
+      "x": 0.4934,
+      "y": 0.7342,
+      "w": 0.2438,
+      "h": 0.1817,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 9"
+    },
+    {
+      "slot": 10,
+      "preset": "grid-10",
+      "x": 0.7364,
+      "y": 0.7342,
+      "w": 0.2577,
+      "h": 0.1836,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 10"
+    }
+  ],
+  "10": [
+    {
+      "slot": 1,
+      "preset": "grid-12",
+      "x": 0.0295,
+      "y": 0.3332,
+      "w": 0.2354,
+      "h": 0.1915,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 1"
+    },
+    {
+      "slot": 2,
+      "preset": "grid-12",
+      "x": 0.5017,
+      "y": 0.3332,
+      "w": 0.2354,
+      "h": 0.1915,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 2"
+    },
+    {
+      "slot": 3,
+      "preset": "grid-12",
+      "x": 0.7364,
+      "y": 0.3332,
+      "w": 0.2368,
+      "h": 0.1915,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 3"
+    },
+    {
+      "slot": 4,
+      "preset": "grid-12",
+      "x": 0.2656,
+      "y": 0.3332,
+      "w": 0.2368,
+      "h": 0.1925,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 4"
+    },
+    {
+      "slot": 5,
+      "preset": "grid-12",
+      "x": 0.0295,
+      "y": 0.5214,
+      "w": 0.2354,
+      "h": 0.1915,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 5"
+    },
+    {
+      "slot": 6,
+      "preset": "grid-12",
+      "x": 0.2656,
+      "y": 0.5214,
+      "w": 0.2354,
+      "h": 0.1915,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 6"
+    },
+    {
+      "slot": 7,
+      "preset": "grid-12",
+      "x": 0.5017,
+      "y": 0.5214,
+      "w": 0.2354,
+      "h": 0.1915,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 7"
+    },
+    {
+      "slot": 8,
+      "preset": "grid-12",
+      "x": 0.7364,
+      "y": 0.5214,
+      "w": 0.2368,
+      "h": 0.1915,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 8"
+    },
+    {
+      "slot": 9,
+      "preset": "grid-12",
+      "x": 0.0295,
+      "y": 0.7655,
+      "w": 0.2354,
+      "h": 0.1425,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 9"
+    },
+    {
+      "slot": 10,
+      "preset": "grid-12",
+      "x": 0.2656,
+      "y": 0.7655,
+      "w": 0.2354,
+      "h": 0.1425,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 10"
+    },
+    {
+      "slot": 11,
+      "preset": "grid-12",
+      "x": 0.5017,
+      "y": 0.7655,
+      "w": 0.2354,
+      "h": 0.1425,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 11"
+    },
+    {
+      "slot": 12,
+      "preset": "grid-12",
+      "x": 0.7378,
+      "y": 0.7655,
+      "w": 0.2354,
+      "h": 0.1425,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 12"
+    }
+  ],
+  "11": [
+    {
+      "slot": 1,
+      "preset": "grid-9",
+      "x": 0.0239,
+      "y": 0.3273,
+      "w": 0.3188,
+      "h": 0.1954,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 1"
+    },
+    {
+      "slot": 2,
+      "preset": "grid-9",
+      "x": 0.3406,
+      "y": 0.34,
+      "w": 0.2299,
+      "h": 0.1827,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 2"
+    },
+    {
+      "slot": 3,
+      "preset": "grid-9",
+      "x": 0.6573,
+      "y": 0.34,
+      "w": 0.3188,
+      "h": 0.1836,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 3"
+    },
+    {
+      "slot": 4,
+      "preset": "grid-9",
+      "x": 0.6573,
+      "y": 0.5096,
+      "w": 0.3188,
+      "h": 0.2033,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 4"
+    },
+    {
+      "slot": 5,
+      "preset": "grid-9",
+      "x": 0.0239,
+      "y": 0.5302,
+      "w": 0.2202,
+      "h": 0.1827,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 5"
+    },
+    {
+      "slot": 6,
+      "preset": "grid-9",
+      "x": 0.3406,
+      "y": 0.5302,
+      "w": 0.3188,
+      "h": 0.1827,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 6"
+    },
+    {
+      "slot": 7,
+      "preset": "grid-9",
+      "x": 0.6545,
+      "y": 0.7077,
+      "w": 0.3188,
+      "h": 0.1984,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 7"
+    },
+    {
+      "slot": 8,
+      "preset": "grid-9",
+      "x": 0.0212,
+      "y": 0.7234,
+      "w": 0.3188,
+      "h": 0.1827,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 8"
+    },
+    {
+      "slot": 9,
+      "preset": "grid-9",
+      "x": 0.3378,
+      "y": 0.7234,
+      "w": 0.3188,
+      "h": 0.1827,
+      "action": "add",
+      "quantity": 1,
+      "label": "Producto 9"
+    }
+  ]
+}

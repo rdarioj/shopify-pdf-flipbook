@@ -1,0 +1,13 @@
+{
+  "buildCommand": "npm run build:rc",
+  "outputDirectory": "dist",
+  "installCommand": "npm install",
+  "rewrites": [
+    { "source": "/", "destination": "/catalogs.html" }
+  ],
+  "build": {
+    "env": {
+      "PARCEL_CACHE_DIR": "/tmp/parcel-flipbook-cache"
+    }
+  }
+}

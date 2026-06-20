@@ -1,0 +1,239 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Interactive Catalog</title>
+
+  <link rel="stylesheet" href="./styles/flipbook.css" />
+  <script>
+    (function () {
+      var isEditor = new URLSearchParams(window.location.search).get("editor") === "1";
+      window.FLIPBOOK_CONFIG = {
+        requireAuth: isEditor,
+        editorRequireAuth: true,
+      };
+    })();
+  </script>
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+
+</head>
+
+<body class="is-publish">
+
+  <div id="rc-auth-gate" class="hidden">
+
+    <div class="auth-box">
+
+      <div class="auth-logo">Racket Central</div>
+
+      <div class="auth-sub">Interactive catalog</div>
+
+      <p class="auth-hint">Sign in with your corporate Google account</p>
+
+      <div class="auth-google-wrap">
+
+        <div id="google-btn-container"></div>
+
+      </div>
+
+      <div class="auth-error" id="auth-error"></div>
+
+      <div class="auth-alt">
+
+        <button type="button" class="auth-alt-btn" onclick="togglePasswordLogin()">Sign in with username and password</button>
+
+      </div>
+
+      <div id="pw-fallback" class="auth-pw-fallback" style="display:none">
+
+        <label class="auth-label">Username</label>
+
+        <input id="auth-username" class="auth-input auth-input-text" type="text" placeholder="Username" autocomplete="username" />
+
+        <label class="auth-label">Password</label>
+
+        <input id="auth-password" class="auth-input" type="password" placeholder="Password" autocomplete="current-password" />
+
+        <button type="button" class="auth-submit" onclick="rcLogin()">Sign in</button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div id="rc-flipbook-app">
+
+    <div id="catalogLoading" class="catalog-loading" aria-live="polite">
+
+      <div class="catalog-loading__inner">
+
+        <div class="catalog-loading__spinner" aria-hidden="true"></div>
+
+        <p>Loading catalog…</p>
+
+      </div>
+
+    </div>
+
+    <header class="toolbar">
+
+      <div class="left">
+
+        <a id="backToCatalogs" class="toolbar-link" href="./catalogs.html" hidden>← Catalogs</a>
+
+        <button type="button" id="prevBtn" title="Previous">⟵</button>
+
+        <button type="button" id="nextBtn" title="Next">⟶</button>
+
+        <span id="pageInfo">—</span>
+
+      </div>
+
+      <div class="center toolbar-title" id="toolbarTitle"></div>
+
+      <div class="right">
+
+        <div class="toolbar-user" id="rcToolbarUser" hidden>
+
+          <span class="toolbar-user__name" id="rcUserName"></span>
+
+          <button type="button" class="toolbar-user__logout" id="logoutBtn">Sign out</button>
+
+        </div>
+
+        <label class="upload" id="uploadControl" style="cursor: pointer">
+
+          <input id="pdfInput" type="file" accept="application/pdf" style="display: none" />
+
+          <span id="uploadLabel">📂 Upload PDF</span>
+
+        </label>
+
+      </div>
+
+    </header>
+
+
+
+    <main class="viewer">
+
+      <aside id="thumbnails" class="thumbnails" aria-label="Thumbnails"></aside>
+
+      <section id="flipbook" class="flipbook" aria-live="polite">
+
+        <div class="flipbook-stage">
+
+          <div class="flipbook-book-slot"></div>
+
+          <div class="flipbook-edge-ui">
+
+            <button type="button" class="flipbook-edge-zone flipbook-edge-zone--prev" aria-label="Previous page" title="Previous page">
+
+              <span class="flipbook-edge-visual flipbook-edge-visual--prev">
+
+                <span class="flipbook-edge-curl" aria-hidden="true"></span>
+
+                <span class="flipbook-edge-arrow" aria-hidden="true">‹</span>
+
+              </span>
+
+            </button>
+
+            <button type="button" class="flipbook-edge-zone flipbook-edge-zone--next" aria-label="Next page" title="Next page">
+
+              <span class="flipbook-edge-visual flipbook-edge-visual--next">
+
+                <span class="flipbook-edge-curl" aria-hidden="true"></span>
+
+                <span class="flipbook-edge-arrow" aria-hidden="true">›</span>
+
+              </span>
+
+            </button>
+
+          </div>
+
+          <div class="flipbook-top-tools" aria-label="Herramientas del visor">
+
+            <button type="button" id="zoomToggleBtn" class="flipbook-zoom-toggle" title="Acercar" aria-pressed="false">
+
+              <svg class="flipbook-zoom-toggle__svg" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+
+                <circle cx="10" cy="10" r="6.5" fill="none" stroke="currentColor" stroke-width="1.8" />
+
+                <line x1="14.8" y1="14.8" x2="20" y2="20" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+
+                <line x1="7" y1="10" x2="13" y2="10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+
+                <line class="flipbook-zoom-toggle__plus-v" x1="10" y1="7" x2="10" y2="13" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+
+              </svg>
+
+            </button>
+
+          </div>
+
+          <div class="flipbook-zoom-rail" aria-label="Zoom fino" hidden>
+
+            <button type="button" id="zoomInSideBtn" title="Acercar más">+</button>
+
+            <span id="zoomInfoSide" class="flipbook-zoom-rail__label">100%</span>
+
+            <button type="button" id="zoomOutSideBtn" title="Alejar">−</button>
+
+          </div>
+
+        </div>
+
+        <div class="flipbook-scrubber" id="flipbookScrubber" hidden role="slider" aria-label="Progreso en el catálogo" aria-valuemin="1" aria-valuenow="1" aria-valuemax="1">
+
+          <div class="flipbook-scrubber__track" role="presentation">
+
+            <div class="flipbook-scrubber__fill"></div>
+
+            <button type="button" class="flipbook-scrubber__thumb" aria-label="Arrastrar para otra sección del catálogo"></button>
+
+          </div>
+
+        </div>
+
+      </section>
+
+    </main>
+
+
+
+    <footer class="footer">
+
+      <small><span id="pdfName">Catalog</span></small>
+
+    </footer>
+
+  </div>
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.9.179/pdf.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.9.179/pdf.worker.min.js"></script>
+
+  <script src="./scripts/auth-rc.js"></script>
+
+  <script type="module" src="./scripts/viewer-entry.js"></script>
+
+  <script type="module" src="./scripts/main.js"></script>
+
+</body>
+
+</html>
+
+

@@ -1,0 +1,43 @@
+{
+  "filled": [
+    {
+      "page": 2,
+      "slot": 5,
+      "label": "NOX AT10 Genius 18K Alum 2026",
+      "featured": true,
+      "handle": "nox-padel-racket-at10-genius-18k-alum-26"
+    },
+    {
+      "page": 2,
+      "slot": 1,
+      "label": "NOX AT10 Genius 18K Alum 2026",
+      "handle": "nox-padel-racket-at10-genius-18k-alum-26"
+    },
+    {
+      "page": 2,
+      "slot": 2,
+      "label": "Bullpadel Padel Racket Vertex 05 26",
+      "handle": "bullpadel-padel-racket-vertex-05-26"
+    },
+    {
+      "page": 2,
+      "slot": 3,
+      "label": "Bullpadel Padel Racket Vertex 05 Hybrid 26",
+      "handle": "bullpadel-padel-racket-vertex-05-hybrid-26"
+    },
+    {
+      "page": 2,
+      "slot": 4,
+      "label": "Bullpadel Padel Racket Neuron 02 26",
+      "handle": "bullpadel-padel-racket-neuron-02-26"
+    }
+  ],
+  "skipped": [],
+  "errors": [],
+  "summary": {
+    "filled": 5,
+    "skipped": 0,
+    "errors": 0,
+    "pages_with_hotspots": 8
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "version": 1,
+  "catalogs": [
+    {
+      "id": "racket-central",
+      "title": "Catálogo Racket Central · Abril 2024",
+      "organization": "racketcentral",
+      "requireAuth": false,
+      "editorRequireAuth": true,
+      "pdfUrl": "./catalogo-abril.pdf",
+      "hotspotsFile": "default",
+      "mode": "shopify",
+      "frozen": true,
+      "entry": "index.html",
+      "storeOrigin": "https://racketcentral.com",
+      "addMode": "permalink",
+      "navigate": "tab",
+      "publishMode": true,
+      "hotspotDebug": false,
+      "footerHint": "Tocá un producto para comprar en racketcentral.com",
+      "notes": "Entrada congelada para producción RC."
+    },
+    {
+      "id": "rc-template",
+      "title": "Catálogo RC · Template (nuevo)",
+      "organization": "racketcentral",
+      "requireAuth": false,
+      "editorRequireAuth": true,
+      "pdfUrl": "./catalogo-rc-template-filled.pdf",
+      "hotspotsFile": "rc-template",
+      "mode": "shopify",
+      "frozen": false,
+      "entry": "viewer.html",
+      "storeOrigin": "https://racketcentral.com",
+      "addMode": "permalink",
+      "navigate": "tab",
+      "publishMode": true,
+      "hotspotDebug": false,
+      "singlePage": false,
+      "footerHint": "Tocá un producto para comprar en racketcentral.com",
+      "notes": "Template RC 2026 — Padel Summer Sale."
+    },
+    {
+      "id": "tap-secos",
+      "title": "TAP Distribuciones · Catálogo Secos (demo)",
+      "pdfUrl": "./catalogos/tap-catalogo-secos.pdf",
+      "hotspotsFile": "tap",
+      "mode": "b2b-whatsapp",
+      "frozen": false,
+      "entry": "viewer.html",
+      "storeOrigin": "https://tapdistribuciones.com.ar",
+      "publishMode": true,
+      "hotspotDebug": true,
+      "whatsappPhone": "",
+      "whatsappBusinessName": "TAP",
+      "whatsappIntro": "Hola TAP, quiero pedir:",
+      "footerHint": "Demo: tocá productos en págs. 26, 27 o 29 (zonas naranja) · armá pedido · WhatsApp",
+      "notes": "Demo B2B — solo desarrollo local (no deploy RC)."
+    }
+  ]
+}

@@ -1,0 +1,140 @@
+{
+  "26": [
+    {
+      "x": 0.06,
+      "y": 0.28,
+      "w": 0.18,
+      "h": 0.15,
+      "label": "Aceitunas Verdes En Rodajas",
+      "codigo": "10.806",
+      "presentacion": "80/150gr",
+      "action": "cart",
+      "quantity": 1
+    },
+    {
+      "x": 0.26,
+      "y": 0.28,
+      "w": 0.18,
+      "h": 0.15,
+      "label": "Aceitunas Verdes Rellenas c/Morrón",
+      "codigo": "10.805",
+      "presentacion": "80/150gr",
+      "action": "cart",
+      "quantity": 1
+    },
+    {
+      "x": 0.06,
+      "y": 0.45,
+      "w": 0.18,
+      "h": 0.15,
+      "label": "Aceitunas Negras",
+      "codigo": "10.803",
+      "presentacion": "80/150gr",
+      "action": "cart",
+      "quantity": 1
+    },
+    {
+      "x": 0.26,
+      "y": 0.45,
+      "w": 0.18,
+      "h": 0.15,
+      "label": "Aceitunas Negras Descarozadas",
+      "codigo": "10.804",
+      "presentacion": "80/150gr",
+      "action": "cart",
+      "quantity": 1
+    },
+    {
+      "x": 0.08,
+      "y": 0.63,
+      "w": 0.34,
+      "h": 0.13,
+      "label": "Pickles Mixtos En Vinagre",
+      "codigo": "10.807",
+      "presentacion": "80/150gr",
+      "action": "cart",
+      "quantity": 1
+    },
+    {
+      "x": 0.56,
+      "y": 0.34,
+      "w": 0.38,
+      "h": 0.46,
+      "label": "Tomate Triturado",
+      "codigo": "10.553",
+      "presentacion": "520g",
+      "action": "cart",
+      "quantity": 1
+    }
+  ],
+  "27": [
+    {
+      "x": 0.05,
+      "y": 0.32,
+      "w": 0.33,
+      "h": 0.25,
+      "label": "Ketchup Natura",
+      "codigo": "8.40100010",
+      "presentacion": "X250CC",
+      "action": "cart",
+      "quantity": 1
+    },
+    {
+      "x": 0.52,
+      "y": 0.32,
+      "w": 0.33,
+      "h": 0.25,
+      "label": "Mayonesa Natura",
+      "codigo": "8.30010007",
+      "presentacion": "X250CC",
+      "action": "cart",
+      "quantity": 1
+    },
+    {
+      "x": 0.05,
+      "y": 0.73,
+      "w": 0.33,
+      "h": 0.14,
+      "label": "Salsa Golf Natura",
+      "codigo": "8.50100002",
+      "presentacion": "Display X20U X125CC",
+      "action": "cart",
+      "quantity": 1
+    }
+  ],
+  "29": [
+    {
+      "x": 0.04,
+      "y": 0.56,
+      "w": 0.42,
+      "h": 0.3,
+      "label": "Rocío Vegetal Maíz Mazola",
+      "codigo": "8.10140007",
+      "presentacion": "120GR",
+      "action": "cart",
+      "quantity": 1
+    },
+    {
+      "x": 0.52,
+      "y": 0.56,
+      "w": 0.42,
+      "h": 0.3,
+      "label": "Rocío Vegetal Girasol NATURA",
+      "codigo": "8.10550008",
+      "presentacion": "120GR",
+      "action": "cart",
+      "quantity": 1
+    },
+    {
+      "x": 0.04,
+      "y": 0.12,
+      "w": 0.42,
+      "h": 0.28,
+      "label": "Oliva Virgen Extra Selección",
+      "codigo": "8.10900033",
+      "presentacion": "X500ML",
+      "action": "cart",
+      "quantity": 1
+    }
+  ]
+}

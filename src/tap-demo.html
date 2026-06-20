@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="refresh" content="0;url=./viewer.html?catalog=tap-secos" />
+  <title>Redirigiendo a TAP…</title>
+  <script>
+    (function () {
+      var q = window.location.search;
+      var extra = q ? (q.charAt(0) === "?" ? "&" + q.slice(1) : "&" + q) : "";
+      window.location.replace("./viewer.html?catalog=tap-secos" + extra);
+    })();
+  </script>
+</head>
+<body>
+  <p><a href="./viewer.html?catalog=tap-secos">Abrir demo TAP</a></p>
+</body>
+</html>
