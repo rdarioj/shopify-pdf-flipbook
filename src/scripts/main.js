@@ -520,18 +520,39 @@ function getMobileFlipZone(pf, globalPos) {
   return null;
 }
 
-/** Dist coords at outer-left corner — passes library corner check + BACK direction. */
+/** Visible page top-left in dist coords (portrait) — BACK direction for start(). */
 function prevFlipPos(pf, globalPos) {
   const rect = pf.getRender().getRect();
   const bookPos = pf.getRender().convertToBook(globalPos);
-  const reach = Math.hypot(rect.pageWidth, rect.height) / 4;
-  const yBook = Math.max(reach * 0.4, Math.min(rect.height - reach * 0.4, bookPos.y));
-  return { x: rect.left + reach * 0.45, y: rect.top + yBook };
+  const margin = rect.height / 10;
+  const yBook = Math.max(margin, Math.min(rect.height - margin, bookPos.y));
+  return {
+    x: rect.left + rect.pageWidth + margin,
+    y: rect.top + yBook,
+  };
 }
 
-function runMobilePrevFlip(pf, fc, origFlip, globalPos) {
+/** Same page-curl animation as forward, mirrored from the left corner (mobile only). */
+function runMobileBackFlip(fc, pf, globalPos) {
   if (pf.getCurrentPageIndex() < 1) return false;
-  origFlip.call(fc, prevFlipPos(pf, globalPos));
+
+  const pos = prevFlipPos(pf, globalPos);
+  if (fc.calc !== null) fc.render.finishAnimation();
+  if (!fc.start(pos)) return false;
+
+  const rect = fc.getBoundsRect();
+  const topMargins = rect.height / 10;
+  const yStart =
+    fc.calc.getCorner() === "bottom" ? rect.height - topMargins : topMargins;
+  const yDest = fc.calc.getCorner() === "bottom" ? rect.height : 0;
+
+  fc.setState("flipping");
+  fc.calc.calc({ x: topMargins, y: yStart });
+  fc.animateFlippingTo(
+    { x: topMargins, y: yStart },
+    { x: rect.pageWidth + topMargins, y: yDest },
+    true
+  );
   return true;
 }
 
@@ -559,7 +580,7 @@ function installMobileNaturalFlip(pf) {
   fc.flip = function mobileFlip(globalPos) {
     const zone = getMobileFlipZone(pf, globalPos);
     if (zone === "prev") {
-      runMobilePrevFlip(pf, fc, origFlip, globalPos);
+      runMobileBackFlip(fc, pf, globalPos);
       return;
     }
     origFlip(globalPos);
@@ -582,7 +603,7 @@ function installMobileNaturalFlip(pf) {
       if (zone === "prev") {
         this.isUserTouch = false;
         finishFold();
-        touchHandled = runMobilePrevFlip(pf, fc, origFlip, pos);
+        touchHandled = runMobileBackFlip(fc, pf, pos);
         touchZone = null;
         return;
       }
