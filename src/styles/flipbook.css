@@ -1318,64 +1318,7 @@ body.is-b2b .wa-cart__drawer {
   }
 
   .flipbook-edge-ui {
-    display: block;
-    pointer-events: none;
-    z-index: 80;
-  }
-
-  .flipbook-edge-zone {
-    pointer-events: auto;
-    top: 6px;
-    bottom: auto;
-    width: min(24vw, 92px);
-    height: min(24vw, 92px);
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    z-index: 81;
-  }
-
-  .flipbook-edge-zone--prev {
-    left: 4px;
-    padding-left: 0;
-    justify-content: flex-start;
-  }
-
-  .flipbook-edge-zone--next {
-    right: 4px;
-    padding-right: 0;
-    justify-content: flex-end;
-  }
-
-  .flipbook-edge-curl {
-    display: block;
-    width: 46px;
-    height: 46px;
-  }
-
-  .flipbook-edge-arrow {
-    display: none;
-  }
-
-  .flipbook-edge-visual {
-    opacity: 0.55 !important;
-    transform: none !important;
-    align-self: flex-start;
-    margin-bottom: 0;
-    margin-top: 2px;
-    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
-    pointer-events: auto;
-    min-width: 48px;
-    min-height: 48px;
-    touch-action: manipulation;
-  }
-
-  .flipbook-edge-zone {
-    touch-action: manipulation;
-  }
-
-  .flipbook-edge-zone:not(:disabled):active .flipbook-edge-visual {
-    opacity: 0.85 !important;
+    display: none !important;
   }
 
   body.is-mobile .stf-book-mount,

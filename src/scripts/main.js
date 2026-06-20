@@ -267,21 +267,6 @@ function jumpToSpreadFromRatio(ratio) {
   pf.flip(pageIdx, "top");
 }
 
-function bindEdgeFlip(zone, flipFn) {
-  if (!zone) return;
-  let lastFlip = 0;
-  const run = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    if (zone.disabled) return;
-    const now = Date.now();
-    if (now - lastFlip < 450) return;
-    lastFlip = now;
-    flipFn();
-  };
-  zone.addEventListener("pointerup", run);
-}
-
 function installFlipbookChrome() {
   const fb = document.getElementById("flipbook");
   if (!fb || fb.dataset.chromeBound === "1") return;
@@ -289,8 +274,20 @@ function installFlipbookChrome() {
 
   const prevZ = fb.querySelector(".flipbook-edge-zone--prev");
   const nextZ = fb.querySelector(".flipbook-edge-zone--next");
-  bindEdgeFlip(prevZ, () => state.pageFlip?.flipPrev("top"));
-  bindEdgeFlip(nextZ, () => state.pageFlip?.flipNext("top"));
+  const prevV = prevZ?.querySelector(".flipbook-edge-visual");
+  const nextV = nextZ?.querySelector(".flipbook-edge-visual");
+  prevV?.addEventListener("click", (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (prevZ?.disabled) return;
+    state.pageFlip?.flipPrev("top");
+  });
+  nextV?.addEventListener("click", (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (nextZ?.disabled) return;
+    state.pageFlip?.flipNext("top");
+  });
 
   const track = fb.querySelector(".flipbook-scrubber__track");
   const thumb = fb.querySelector(".flipbook-scrubber__thumb");
@@ -495,140 +492,39 @@ function touchDistance(a, b) {
   return Math.hypot(a.x - b.x, a.y - b.y);
 }
 
-/** Portrait single-page: visible page left edge sits at x≈pageWidth, not x≈0. */
-function getMobileCornerHit(pf, globalPos) {
-  const render = pf.getRender();
-  const rect = render.getRect();
-  const bookPos = render.convertToBook(globalPos);
-  const pw = rect.pageWidth;
-  const reach = Math.sqrt(pw * pw + rect.height * rect.height) / 5;
-
-  if (
-    bookPos.x <= 0 ||
-    bookPos.y <= 0 ||
-    bookPos.x >= rect.width ||
-    bookPos.y >= rect.height
-  ) {
-    return null;
-  }
-
-  const top = bookPos.y < reach;
-  const bottom = bookPos.y > rect.height - reach;
-  if (!top && !bottom) return null;
-
-  if (bookPos.x > rect.width - reach) return "next";
-  if (bookPos.x < reach) return "prev";
-  if (pf.getOrientation() === "portrait" && Math.abs(bookPos.x - pw) < reach * 1.35) {
-    return "prev";
-  }
-
-  return null;
-}
-
-function bookPosToDist(pf, bookX, bookY) {
-  const rect = pf.getRender().getRect();
-  return { x: bookX + rect.left, y: bookY + rect.top };
-}
-
-/** Heyzine-like mobile: corner curl on touch + easier page-turn commit. */
-function installMobileFlipLenience(pf) {
+/** Mobile: instant touch + finger-drag fold only (native StPageFlip, no UI hacks). */
+function installMobileNaturalFlip(pf) {
   if (!isMobileViewport()) return;
 
   const fc = pf.getFlipController();
   const dist = pf.getUI()?.getDistElement?.();
-  const origFlip = fc.flip.bind(fc);
-  const origShowCorner = fc.showCorner.bind(fc);
-  const origUserStop = pf.userStop.bind(pf);
+  if (!dist) return;
 
-  fc.flip = function patchedFlip(globalPos) {
-    const hit = getMobileCornerHit(pf, globalPos);
-    if (hit === "prev") {
-      if (pf.getCurrentPageIndex() >= 1) this.flipPrev("top");
-      return;
-    }
-    if (hit === "next") {
-      if (pf.getCurrentPageIndex() < pf.getPageCount() - 1) this.flipNext("top");
-      return;
-    }
-    origFlip(globalPos);
-  };
-
-  fc.showCorner = function patchedShowCorner(globalPos) {
-    const hit = getMobileCornerHit(pf, globalPos);
-    if (hit === "prev") {
-      if (pf.getCurrentPageIndex() < 1) return;
-      const rect = pf.getRender().getRect();
-      const bookPos = pf.getRender().convertToBook(globalPos);
-      const reach = Math.sqrt(rect.pageWidth ** 2 + rect.height ** 2) / 5;
-      const y = bookPos.y < rect.height / 2 ? reach * 0.5 : rect.height - reach * 0.5;
-      return origShowCorner(bookPosToDist(pf, reach * 0.5, y));
-    }
-    return origShowCorner(globalPos);
-  };
-
-  fc.stopMove = function lenientStopMove() {
-    if (this.calc === null) return;
-    const pos = this.calc.getPosition();
-    const rect = this.getBoundsRect();
-    const y = this.calc.getCorner() === "bottom" ? rect.height : 0;
-    const progress = this.calc.getFlippingProgress();
-    const isBack = this.calc.getDirection() === 1;
-    const turned = isBack
-      ? progress >= 15 || pos.x >= rect.pageWidth * 0.72
-      : progress >= 15 || pos.x <= rect.pageWidth * 0.28;
-    if (turned) {
-      this.animateFlippingTo(pos, { x: -rect.pageWidth, y }, true);
-    } else {
-      this.animateFlippingTo(pos, { x: rect.pageWidth, y }, false);
-    }
-  };
-
-  pf.userMove = function lenientUserMove(pos, isTouch) {
+  pf.userMove = function mobileUserMove(pos) {
     if (!this.isUserTouch && this.getSettings().showPageCorners) {
       fc.showCorner(pos);
     } else if (this.isUserTouch) {
-      if (touchDistance(this.mousePosition, pos) > 2) {
+      if (touchDistance(this.mousePosition, pos) > 5) {
         this.isUserMove = true;
         fc.fold(pos);
       }
     }
   };
 
-  pf.userStop = function patchedUserStop(pos, isSwipe = false) {
-    if (this.isUserTouch && !isSwipe && !this.isUserMove) {
-      const hit = getMobileCornerHit(pf, pos);
-      if (hit === "prev" && pf.getCurrentPageIndex() >= 1) {
-        this.isUserTouch = false;
-        fc.flipPrev("top");
-        return;
-      }
-      if (hit === "next" && pf.getCurrentPageIndex() < pf.getPageCount() - 1) {
-        this.isUserTouch = false;
-        fc.flipNext("top");
-        return;
-      }
-    }
-    origUserStop(pos, isSwipe);
-  };
-
-  if (dist) {
-    const toPos = (clientX, clientY) => {
+  dist.addEventListener(
+    "touchstart",
+    (e) => {
+      if (e.target?.closest?.("a, button")) return;
+      const t = e.changedTouches[0];
+      if (!t) return;
       const rect = dist.getBoundingClientRect();
-      return { x: clientX - rect.left, y: clientY - rect.top };
-    };
-    dist.addEventListener(
-      "touchstart",
-      (e) => {
-        if (e.target?.closest?.(".flipbook-edge-zone")) return;
-        const t = e.changedTouches[0];
-        if (!t) return;
-        const pos = toPos(t.clientX, t.clientY);
-        pf.startUserTouch(pos);
-        fc.showCorner(pos);
-      },
-      { passive: true }
-    );
-  }
+      pf.startUserTouch({
+        x: t.clientX - rect.left,
+        y: t.clientY - rect.top,
+      });
+    },
+    { passive: true }
+  );
 }
 
 async function buildPageFlip() {
@@ -719,13 +615,13 @@ async function buildPageFlip() {
     maxWidth: singlePage ? 1200 : 1400,
     minHeight: 160,
     maxHeight: 2200,
-    maxShadowOpacity: mobile ? 0.45 : 0.55,
+    maxShadowOpacity: 0.55,
     showCover: true,
     drawShadow: true,
-    flippingTime: mobile ? 720 : 880,
+    flippingTime: 880,
     usePortrait: true,
     mobileScrollSupport: false,
-    swipeDistance: mobile ? 12 : 30,
+    swipeDistance: 30,
     startPage,
     clickEventForward: true,
     useMouseEvents: true,
@@ -743,7 +639,7 @@ async function buildPageFlip() {
     return;
   }
   state.pageFlip = pf;
-  installMobileFlipLenience(pf);
+  installMobileNaturalFlip(pf);
 
   pf.on("flip", () => {
     state.currentPageIndex = pf.getCurrentPageIndex();
