@@ -497,7 +497,7 @@ function getMobileFlipZone(pf, globalPos) {
   const rect = render.getRect();
   const bookPos = render.convertToBook(globalPos);
   const pw = rect.pageWidth;
-  const reach = Math.hypot(pw, rect.height) / 5;
+  const reach = Math.hypot(pw, rect.height) / 4;
 
   if (
     bookPos.x <= 0 ||
@@ -514,18 +514,30 @@ function getMobileFlipZone(pf, globalPos) {
 
   if (bookPos.x > rect.width - reach) return "next";
 
-  if (pf.getOrientation() === "portrait") {
-    if (bookPos.x < reach || Math.abs(bookPos.x - pw) < reach * 1.2) return "prev";
-  } else if (bookPos.x < reach) {
-    return "prev";
-  }
+  if (bookPos.x < reach) return "prev";
+  if (pf.getOrientation() === "portrait" && bookPos.x < pw + reach * 0.85) return "prev";
 
   return null;
 }
 
+/** Dist coords at outer-left corner — passes library corner check + BACK direction. */
+function prevFlipPos(pf, globalPos) {
+  const rect = pf.getRender().getRect();
+  const bookPos = pf.getRender().convertToBook(globalPos);
+  const reach = Math.hypot(rect.pageWidth, rect.height) / 4;
+  const yBook = Math.max(reach * 0.4, Math.min(rect.height - reach * 0.4, bookPos.y));
+  return { x: rect.left + reach * 0.45, y: rect.top + yBook };
+}
+
+function runMobilePrevFlip(pf, fc, origFlip, globalPos) {
+  if (pf.getCurrentPageIndex() < 1) return false;
+  origFlip.call(fc, prevFlipPos(pf, globalPos));
+  return true;
+}
+
 /**
- * Mobile portrait: BACK drag uses broken fold math (stretched page).
- * Mirror forward behavior — tap or release in left zone runs flipPrev animation.
+ * Mobile portrait: mirror right-corner tap — left zone runs the same flip() animation.
+ * Never call flipPrev() here (it re-enters patched flip and silently fails).
  */
 function installMobileNaturalFlip(pf) {
   if (!isMobileViewport()) return;
@@ -535,20 +547,19 @@ function installMobileNaturalFlip(pf) {
   if (!dist) return;
 
   let touchZone = null;
+  let touchHandled = false;
   const origFold = fc.fold.bind(fc);
   const origFlip = fc.flip.bind(fc);
   const origUserStop = pf.userStop.bind(pf);
 
   const finishFold = () => {
-    if (fc.calc !== null) {
-      fc.render.finishAnimation();
-    }
+    if (fc.calc !== null) fc.render.finishAnimation();
   };
 
   fc.flip = function mobileFlip(globalPos) {
     const zone = getMobileFlipZone(pf, globalPos);
     if (zone === "prev") {
-      if (pf.getCurrentPageIndex() >= 1) this.flipPrev("top");
+      runMobilePrevFlip(pf, fc, origFlip, globalPos);
       return;
     }
     origFlip(globalPos);
@@ -556,8 +567,7 @@ function installMobileNaturalFlip(pf) {
 
   pf.userMove = function mobileUserMove(pos) {
     if (!this.isUserTouch && this.getSettings().showPageCorners) {
-      const zone = getMobileFlipZone(pf, pos);
-      if (zone !== "prev") fc.showCorner(pos);
+      if (getMobileFlipZone(pf, pos) !== "prev") fc.showCorner(pos);
     } else if (this.isUserTouch) {
       if (touchDistance(this.mousePosition, pos) > 5) {
         this.isUserMove = true;
@@ -567,12 +577,12 @@ function installMobileNaturalFlip(pf) {
   };
 
   pf.userStop = function mobileUserStop(pos, isSwipe = false) {
-    if (this.isUserTouch && !isSwipe) {
+    if (this.isUserTouch && !isSwipe && !touchHandled) {
       const zone = getMobileFlipZone(pf, pos) || touchZone;
-      if (zone === "prev" && pf.getCurrentPageIndex() >= 1) {
+      if (zone === "prev") {
         this.isUserTouch = false;
         finishFold();
-        fc.flipPrev("top");
+        touchHandled = runMobilePrevFlip(pf, fc, origFlip, pos);
         touchZone = null;
         return;
       }
@@ -590,6 +600,7 @@ function installMobileNaturalFlip(pf) {
       const rect = dist.getBoundingClientRect();
       const pos = { x: t.clientX - rect.left, y: t.clientY - rect.top };
       touchZone = getMobileFlipZone(pf, pos);
+      touchHandled = false;
       pf.startUserTouch(pos);
     },
     { passive: true }
